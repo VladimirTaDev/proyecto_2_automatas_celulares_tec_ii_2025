@@ -12,6 +12,14 @@ HORMIGA = {"pos" : [FILAS//2, COLUMNAS//2],
 MATRIZ = hormiga.generar_nula(FILAS, COLUMNAS)
 
 def main():
+    """
+    Función principal que invoca la lógica y renderiza la imagen
+    Entradas y restricciones:
+    - Ninguna.
+    Salidas.
+    - Simulación renderizada en pantalla.
+    """
+
     pygame.init()
     clock = pygame.time.Clock()
     alto = TAM * FILAS

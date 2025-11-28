@@ -1,5 +1,3 @@
-
-
 def generar_nula(filas, columnas):
     """Genera matriz de ceros"""
     return [[0 for c in range(columnas)] for f in range(filas)]
