@@ -1,6 +1,7 @@
+from random import choices
 # colores de celdas
 # 1 = azules, 2 = rojos
-COLORES = [[(255, 0, 0), 1], [(0, 0, 255), 2]]
+COLORES = [[(0, 0, 255), 1], [(255, 0, 0), 2]]
 
 def main(matriz, pos, dir, filas, columnas):
     # gira la hormiga
@@ -14,11 +15,15 @@ def main(matriz, pos, dir, filas, columnas):
     pos[0] = nueva_f % filas
     pos[1] = nueva_c % columnas
 
-    return matriz
+    return matriz, dir
 
 def generar_nula(filas, columnas):
     """Genera matriz de ceros"""
     return [[0 for c in range(columnas)] for f in range(filas)]
+
+def generar_aleatoria(filas, columnas):
+    """Genera matriz con valores aleatorios entre 0 y 1, dejando 90% del espacio en 0"""
+    return [[choices([0, 1], weights=[0.9, 0.1])[0] for c in range(columnas)] for f in range(filas)]
 
 def girar_hormiga(giro, dir):
     """
