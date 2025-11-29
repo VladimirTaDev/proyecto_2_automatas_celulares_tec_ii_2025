@@ -1,5 +1,14 @@
 from copy import deepcopy
-from random import randint, choices
+from random import choices
+
+# colores de celdas
+# 1 = azules, 2 = rojos
+COLORES = [[(255, 0, 0), 1], [(0, 0, 255), 2]]
+
+def main(matriz):
+    matriz = avanzar_rojos(matriz)
+    matriz = avanzar_azules(matriz)
+    return matriz
 
 def generar_aleatoria(filas, columnas):
     """Genera matriz con valores aleatorios entre 0, 1 y 2 dejando 60% del espacio libre"""

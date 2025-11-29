@@ -1,3 +1,21 @@
+# colores de celdas
+# 1 = azules, 2 = rojos
+COLORES = [[(255, 0, 0), 1], [(0, 0, 255), 2]]
+
+def main(matriz, pos, dir, filas, columnas):
+    # gira la hormiga
+    dir = girar_hormiga(matriz[pos[0]][pos[1]], dir)
+
+    # actualizar celda
+    matriz[pos[0]][pos[1]] = siguiente(matriz[pos[0]][pos[1]])
+
+    # avanzar la hormiga
+    nueva_f, nueva_c = avanzar_hormiga(pos[0], pos[1], dir)
+    pos[0] = nueva_f % filas
+    pos[1] = nueva_c % columnas
+
+    return matriz
+
 def generar_nula(filas, columnas):
     """Genera matriz de ceros"""
     return [[0 for c in range(columnas)] for f in range(filas)]
