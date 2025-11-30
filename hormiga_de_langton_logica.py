@@ -3,7 +3,13 @@ from random import choices
 # 1 = azules, 2 = rojos
 COLORES = [[(0, 0, 255), 1], [(255, 0, 0), 2]]
 
-def main(matriz, pos, dir, filas, columnas):
+def main(matriz, pos, dir, filas, columnas, mouse = None):
+    # cambiar el estado de la celda
+    if mouse:
+        f, c = mouse
+        matriz[f][c] = (matriz[f][c] + 1) % 2
+
+    # ejecutar lógica
     # gira la hormiga
     dir = girar_hormiga(matriz[pos[0]][pos[1]], dir)
 

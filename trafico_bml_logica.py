@@ -5,7 +5,12 @@ from random import choices
 # 1 = azules, 2 = rojos
 COLORES = [[(255, 0, 0), 1], [(0, 0, 255), 2]]
 
-def main(matriz):
+def main(matriz, mouse = None):
+    # cambiar el estado de la celda
+    if mouse:
+        f, c = mouse
+        matriz[f][c] = (matriz[f][c] + 1) % 3
+    # ejecutar lógica
     matriz = avanzar_rojos(matriz)
     matriz = avanzar_azules(matriz)
     return matriz
