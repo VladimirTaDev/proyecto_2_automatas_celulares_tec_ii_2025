@@ -13,6 +13,14 @@ PARAM_AUTOMATA = {"TAM": 5,
                   "MATRIZ": []}
 
 def inicializar_automata(automata, aleatorio = False):
+    """
+    Inicializa el autómata seleccionado.
+    Entradas y restricciones:
+    - automata (int): tipo de autómata. 1 = tráfico, 2 = hormiga.
+    - aleatorio (bool): si se debe generar una matriz aleatoria. Por defecto False.
+    Salida:
+    - Ninguna. Actualiza PARAM_AUTOMATA y COLORES globales.
+    """
     global COLORES
     match automata:
         case 1:  # trafico
@@ -34,12 +42,12 @@ def inicializar_automata(automata, aleatorio = False):
 
 def main(automata = 1):
     """
-    Función principal que invoca la lógica y renderiza la imagen
+    Función principal que invoca la lógica y renderiza la imagen.
     Entradas y restricciones:
-    - Ninguna.
-    Salidas.
-    - Simulación renderizada en pantalla. 
-    """""
+    - automata (int): tipo de autómata a ejecutar. 1 = tráfico, 2 = hormiga...
+    Salida:
+    - Simulación renderizada en pantalla.
+    """
 
     global PARAM_AUTOMATA
     global COLORES

@@ -4,6 +4,19 @@ from random import choices
 COLORES = [[(0, 0, 255), 1], [(255, 0, 0), 2]]
 
 def main(matriz, pos, dir, filas, columnas, mouse = None):
+    """
+    Ejecuta un paso de la lógica del autómata de Langton.
+    Entradas y restricciones:
+    - matriz (list): matriz del tablero.
+    - pos (list): posición actual de la hormiga [fila, columna].
+    - dir (int): dirección de la hormiga: 1↑, 2→, 3↓, 4←.
+    - filas (int): número de filas del tablero.
+    - columnas (int): número de columnas del tablero.
+    - mouse (tuple): posición del mouse (fila, columna) o None.
+    Salida:
+    - matriz (list): matriz actualizada.
+    - dir (int): dirección actualizada de la hormiga.
+    """
     # cambiar el estado de la celda
     if mouse:
         f, c = mouse
@@ -24,11 +37,25 @@ def main(matriz, pos, dir, filas, columnas, mouse = None):
     return matriz, dir
 
 def generar_nula(filas, columnas):
-    """Genera matriz de ceros"""
+    """
+    Genera matriz de ceros.
+    Entradas y restricciones:
+    - filas (int): número de filas.
+    - columnas (int): número de columnas.
+    Salida:
+    - matriz (list): matriz de ceros.
+    """
     return [[0 for c in range(columnas)] for f in range(filas)]
 
 def generar_aleatoria(filas, columnas):
-    """Genera matriz con valores aleatorios entre 0 y 1, dejando 90% del espacio en 0"""
+    """
+    Genera matriz con valores aleatorios entre 0 y 1, dejando 90% del espacio en 0.
+    Entradas y restricciones:
+    - filas (int): número de filas.
+    - columnas (int): número de columnas.
+    Salida:
+    - matriz (list): matriz aleatoria.
+    """
     return [[choices([0, 1], weights=[0.9, 0.1])[0] for c in range(columnas)] for f in range(filas)]
 
 def girar_hormiga(giro, dir):

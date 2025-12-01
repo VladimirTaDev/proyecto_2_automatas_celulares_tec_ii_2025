@@ -6,6 +6,14 @@ from random import choices
 COLORES = [[(255, 0, 0), 1], [(0, 0, 255), 2]]
 
 def main(matriz, mouse = None):
+    """
+    Ejecuta un paso de la lógica del modelo de tráfico BML.
+    Entradas y restricciones:
+    - matriz (list): matriz del tablero.
+    - mouse (tuple): posición del mouse (fila, columna) o None.
+    Salida:
+    - matriz (list): matriz actualizada.
+    """
     # cambiar el estado de la celda
     if mouse:
         f, c = mouse
@@ -16,7 +24,14 @@ def main(matriz, mouse = None):
     return matriz
 
 def generar_aleatoria(filas, columnas):
-    """Genera matriz con valores aleatorios entre 0, 1 y 2 dejando 60% del espacio libre"""
+    """
+    Genera matriz con valores aleatorios entre 0, 1 y 2 dejando 60% del espacio libre.
+    Entradas y restricciones:
+    - filas (int): número de filas.
+    - columnas (int): número de columnas.
+    Salida:
+    - matriz (list): matriz aleatoria.
+    """
     return [[choices([0, 1, 2], weights=[0.6, 0.2, 0.2])[0] for c in range(columnas)] for f in range(filas)]
 
 def avanzar_rojos(M):
