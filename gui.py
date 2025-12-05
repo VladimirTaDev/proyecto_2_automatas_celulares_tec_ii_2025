@@ -6,6 +6,7 @@ import trafico_bml_logica as trafico
 import hormiga_de_langton_logica as hormiga
 import ciclico_logica as ciclico
 import cerebro_de_brian_logica as cerebro
+import agua_logica as agua
 
 COLORES = [[(255, 0, 0), 1], [(0, 0, 255), 2]]
 # parámetros para guardar
@@ -56,6 +57,15 @@ def inicializar_automata(automata, aleatorio = False):
                                                                 PARAM_AUTOMATA["COLUMNAS"])
             COLORES = cerebro.COLORES
             PARAM_AUTOMATA["CONFIG"] = "cerebro.pkl"
+        case 5:  # agua
+            if aleatorio:
+                PARAM_AUTOMATA["MATRIZ"] = agua.generar_aleatoria(PARAM_AUTOMATA["FILAS"],
+                                                                  PARAM_AUTOMATA["COLUMNAS"])
+            else:
+                PARAM_AUTOMATA["MATRIZ"] = agua.generar_nula(PARAM_AUTOMATA["FILAS"],
+                                                             PARAM_AUTOMATA["COLUMNAS"])
+            COLORES = agua.COLORES
+            PARAM_AUTOMATA["CONFIG"] = "agua.pkl"
 
 def main():
     """
@@ -79,6 +89,9 @@ def main():
         if resultado is None:
             break
 
+        # actualizar el tipo de autómata desde el menú
+        PARAM_AUTOMATA["AUTOMATA"] = menu.PARAM_AUTOMATA["AUTOMATA"]
+
         pygame.init()
         clock = pygame.time.Clock()
         alto = PARAM_AUTOMATA["TAM"] * PARAM_AUTOMATA["FILAS"]
@@ -86,7 +99,8 @@ def main():
         ventana = pygame.display.set_mode((ancho, alto))
 
         # inicializar
-        inicializar_automata(PARAM_AUTOMATA["AUTOMATA"], True)
+        aleatorio = PARAM_AUTOMATA["AUTOMATA"] != 2  # hormiga empieza con matriz nula
+        inicializar_automata(PARAM_AUTOMATA["AUTOMATA"], aleatorio)
 
         # Bucle del juego
         loop = True
@@ -161,6 +175,8 @@ def main():
                     PARAM_AUTOMATA["MATRIZ"] = ciclico.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
                 case 4:  # cerebro de brian
                     PARAM_AUTOMATA["MATRIZ"] = cerebro.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
+                case 5:  # agua
+                    PARAM_AUTOMATA["MATRIZ"] = agua.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
 
             mouse_pos = None # Reiniciar la posición del mouse.
             pygame.display.update()

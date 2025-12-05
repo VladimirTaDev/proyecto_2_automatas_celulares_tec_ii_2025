@@ -5,7 +5,7 @@ PARAM_AUTOMATA = {"TAM": 5,
                   "FILAS": 100,
                   "COLUMNAS": 100,
                   "TICK": 1000,
-                  "AUTOMATA": 1,  # tipo de autómata a ejecutar. 1 = tráfico, 2 = hormiga, 3 = brian, 4 = cíclico
+                  "AUTOMATA": 1,  # tipo de autómata a ejecutar. 1 = tráfico, 2 = hormiga, 3 = brian, 4 = cíclico, 5 = agua
                   "MATRIZ": []}
 
 def pedir_entradas():
@@ -42,7 +42,7 @@ def pedir_entradas():
 
 def seleccionar_automata():
     # seleccionar autómata con EasyGUI
-    opciones = ["Tráfico", "Hormiga de Langton", "Cerebro de Brian", "Autómata celular cíclico", "Salir"]
+    opciones = ["Tráfico", "Hormiga de Langton", "Cerebro de Brian", "Autómata celular cíclico", "Agua", "Salir"]
     opcion = easygui.buttonbox(msg="Seleccione un autómata:", title="Menú Principal", choices=opciones)
 
     if opcion in (None, "Salir"):
@@ -56,5 +56,7 @@ def seleccionar_automata():
         PARAM_AUTOMATA["AUTOMATA"] = 3
     elif opcion == "Autómata celular cíclico":
         PARAM_AUTOMATA["AUTOMATA"] = 4
+    elif opcion == "Agua":
+        PARAM_AUTOMATA["AUTOMATA"] = 5
 
     return PARAM_AUTOMATA
