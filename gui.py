@@ -39,16 +39,7 @@ def inicializar_automata(automata, aleatorio = False):
                                    "DIR": 2})
             COLORES = hormiga.COLORES
             PARAM_AUTOMATA["CONFIG"] = "hormiga.pkl"
-        case 3:  # ciclico
-            if aleatorio:
-                PARAM_AUTOMATA["MATRIZ"] = ciclico.generar_aleatoria(PARAM_AUTOMATA["FILAS"],
-                                                                     PARAM_AUTOMATA["COLUMNAS"])
-            else:
-                PARAM_AUTOMATA["MATRIZ"] = ciclico.generar_nula(PARAM_AUTOMATA["FILAS"],
-                                                                PARAM_AUTOMATA["COLUMNAS"])
-            COLORES = ciclico.COLORES
-            PARAM_AUTOMATA["CONFIG"] = "ciclico.pkl"
-        case 4:  # cerebro de brian
+        case 3:  # cerebro de brian
             if aleatorio:
                 PARAM_AUTOMATA["MATRIZ"] = cerebro.generar_aleatoria(PARAM_AUTOMATA["FILAS"],
                                                                      PARAM_AUTOMATA["COLUMNAS"])
@@ -57,6 +48,15 @@ def inicializar_automata(automata, aleatorio = False):
                                                                 PARAM_AUTOMATA["COLUMNAS"])
             COLORES = cerebro.COLORES
             PARAM_AUTOMATA["CONFIG"] = "cerebro.pkl"
+        case 4:  # ciclico
+            if aleatorio:
+                PARAM_AUTOMATA["MATRIZ"] = ciclico.generar_aleatoria(PARAM_AUTOMATA["FILAS"],
+                                                                     PARAM_AUTOMATA["COLUMNAS"])
+            else:
+                PARAM_AUTOMATA["MATRIZ"] = ciclico.generar_nula(PARAM_AUTOMATA["FILAS"],
+                                                                PARAM_AUTOMATA["COLUMNAS"])
+            COLORES = ciclico.COLORES
+            PARAM_AUTOMATA["CONFIG"] = "ciclico.pkl"
         case 5:  # agua
             if aleatorio:
                 PARAM_AUTOMATA["MATRIZ"] = agua.generar_aleatoria(PARAM_AUTOMATA["FILAS"],
@@ -171,10 +171,10 @@ def main():
                     y = PARAM_AUTOMATA["POS"][0] * PARAM_AUTOMATA["TAM"]  # fila
                     x = PARAM_AUTOMATA["POS"][1] * PARAM_AUTOMATA["TAM"]  # columna
                     pygame.draw.rect(ventana, (255, 0, 0), (x, y, PARAM_AUTOMATA["TAM"], PARAM_AUTOMATA["TAM"]))
-                case 3:  # ciclico
-                    PARAM_AUTOMATA["MATRIZ"] = ciclico.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
-                case 4:  # cerebro de brian
+                case 3:  # cerebro de brian
                     PARAM_AUTOMATA["MATRIZ"] = cerebro.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
+                case 4:  # ciclico
+                    PARAM_AUTOMATA["MATRIZ"] = ciclico.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
                 case 5:  # agua
                     PARAM_AUTOMATA["MATRIZ"] = agua.main(PARAM_AUTOMATA["MATRIZ"], mouse_pos)
 
